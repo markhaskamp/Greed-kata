@@ -3,7 +3,7 @@ class Foo
   attr_accessor :a
 
   def yo
-    "yo adrian"
+    "yo Adrianne"
   end
 
 end

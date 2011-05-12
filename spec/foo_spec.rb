@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../app/Foo.rb'
 
 describe Foo do
 
-  it "yo" do
+  it "Yo" do
     Foo.new.yo.should eql "yo adrian"
   end
 
@@ -12,7 +12,7 @@ describe Foo do
     f.a.should eql nil
 
     f.a = "eddie would go"
-    f.a.should eql "eddie would go"
+    f.a.should eql "Eddie would go"
   end
     
 
