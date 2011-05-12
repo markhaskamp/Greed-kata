@@ -15,5 +15,4 @@ describe Foo do
     f.a.should eql "Eddie would go"
   end
     
-
 end
