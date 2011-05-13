@@ -1,5 +1,5 @@
 require 'rspec'
-require File.dirname(__FILE__) + '/../app/Foo.rb'
+require File.dirname(__FILE__) + '/../lib/Foo.rb'
 
 describe Foo do
 
@@ -12,7 +12,8 @@ describe Foo do
     f.a.should eql nil
 
     f.a = "eddie would go"
-    f.a.should eql "Eddie would go"
+    f.a.should eql "eddie would go"
   end
     
 end
+
