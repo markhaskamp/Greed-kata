@@ -4,6 +4,8 @@ class Greed_RulesEngine
 
     while a.length > 0
       ruler = RulesEngine.get_rule(a)
+      # puts "ruler: #{ruler.to_s}"
+
       return_total += ruler.get_score
       a = ruler.reset_dice a
     end
@@ -15,21 +17,15 @@ end
 
 class RulesEngine
   def self.get_rule input_dice_array
-    roll_hash = Hash.new
-    (0..6).each do |n|
-      roll_hash[n] = 0
-    end
 
-    input_dice_array.each do |die|
-      roll_hash[die] += 1
-    end
-    
     (1..6).each do |die|
-      return Rule_TripleDie.new(die) if (roll_hash[die] >= 3)
+      if (input_dice_array.find_all {|i| i == die}.count >= 3)
+        return Rule_TripleDie.new(die) 
+      end
     end
 
-    return Rule_SingleOne.new if (roll_hash[1] > 0)
-    return Rule_SingleFive.new if (roll_hash[5] > 0)
+    return Rule_SingleOne.new unless (input_dice_array.find_index(1) == nil)
+    return Rule_SingleFive.new unless (input_dice_array.find_index(5) == nil)
     return No_Rule.new
   end
 end
@@ -44,6 +40,7 @@ class Rule_TripleDie
     return 500 if @my_die == 5
     return (@my_die * 100)
   end
+
 
   def reset_dice a
     3.times do
@@ -80,7 +77,9 @@ class No_Rule
     0
   end
 
+
   def reset_dice a
     return []
   end
 end
+
