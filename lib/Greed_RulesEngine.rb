@@ -20,7 +20,6 @@ class Greed_RulesEngine
   end
 end
 
-
 class RulesEngine
   def self.get_rule input_dice_array
 
@@ -80,7 +79,6 @@ class No_Rule
   def get_score
     0
   end
-
 
   def reset_dice a
     return []
