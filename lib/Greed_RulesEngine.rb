@@ -2,6 +2,10 @@ class Array
   def has_trips? n
     return self.find_all {|i| i == n}.count >= 3
   end
+
+  def has_at_least_one? n
+    return (self.find_index(n) != nil)
+  end
 end
 
 class Greed_RulesEngine
@@ -27,8 +31,8 @@ class RulesEngine
       return Rule_TripleDie.new(die) if input_dice_array.has_trips?(die)
     end
 
-    return Rule_SingleOne.new unless (input_dice_array.find_index(1) == nil)
-    return Rule_SingleFive.new unless (input_dice_array.find_index(5) == nil)
+    return Rule_SingleOne.new if input_dice_array.has_at_least_one?(1)
+    return Rule_SingleFive.new if input_dice_array.has_at_least_one?(5)
     return No_Rule.new
   end
 end
