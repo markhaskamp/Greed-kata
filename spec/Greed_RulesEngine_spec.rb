@@ -50,7 +50,7 @@ describe Greed_RulesEngine do
     Greed_RulesEngine.roll([1,5,1,2,4]).should == 250
   end
 
-  it "5,5,5,5,5 = 500" do
+  it "5,5,5,5,5 = 600" do
     Greed_RulesEngine.roll([5,5,5,5,5]).should == 600
   end
 end
