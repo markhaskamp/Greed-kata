@@ -4,5 +4,4 @@ gem "rspec", :require => "spec"
 gem "guard"
 gem "guard-rspec"
 gem "growl"
-gem "fsevents"
 
