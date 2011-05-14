@@ -1,10 +1,10 @@
 class Array
-  def has_trips? n
-    return self.find_all {|i| i == n}.count >= 3
-  end
-
   def has_at_least_one? n
     return (self.find_index(n) != nil)
+  end
+
+  def has_at_least_three? n
+    return self.find_all {|i| i == n}.count >= 3
   end
 end
 
@@ -28,7 +28,7 @@ class RulesEngine
   def self.get_rule input_dice_array
 
     (1..6).each do |die|
-      return Rule_TripleDie.new(die) if input_dice_array.has_trips?(die)
+      return Rule_TripleDie.new(die) if input_dice_array.has_at_least_three?(die)
     end
 
     return Rule_SingleOne.new if input_dice_array.has_at_least_one?(1)
