@@ -1,3 +1,9 @@
+class Array
+  def has_trips? n
+    return self.find_all {|i| i == n}.count >= 3
+  end
+end
+
 class Greed_RulesEngine
   def self.roll a
     return_total = 0
@@ -19,9 +25,7 @@ class RulesEngine
   def self.get_rule input_dice_array
 
     (1..6).each do |die|
-      if (input_dice_array.find_all {|i| i == die}.count >= 3)
-        return Rule_TripleDie.new(die) 
-      end
+      return Rule_TripleDie.new(die) if input_dice_array.has_trips?(die)
     end
 
     return Rule_SingleOne.new unless (input_dice_array.find_index(1) == nil)
